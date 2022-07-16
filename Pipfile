@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 pipenv-to-requirements = "*"
+django-dotenv = "*"
 
 [dev-packages]
 black = "*"
