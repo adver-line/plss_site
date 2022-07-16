@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_name %}{{user_obj.email}}의 프로필{% endblock page_name %}
+
+
+
+{% block content %}
+
+
+        
+        
+        {% if user == user_obj %}
+        <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+            <div class="flex items-center">
+                <span class="text-1xl mt-1 mb-5">{{user_obj.email}}</span>
+            </div>
+            <a href="{% url "users:update" %}" class="btn-link">프로필 수정</a>
+        </div>
+        {% endif %}
+            
+
+        
+
+    
+{% endblock content %}
+

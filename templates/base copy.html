@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block page_name %}{% endblock page_name %}</title>
+</head>
+
+<body class="text-gray-700 mt-24">
+
+    <header class="container max-w-full inset-0 flex items-center justify-between px-6 py-6 h-20 border-b border-gray-400 fixed bj-white">
+    <div class="flex items-center">
+        <a href="{% url "core:home" %}">관리 페이지</a>
+    </div>
+    {% include "partials/nav.html" %}
+
+
+    </header>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include "partials/footer.html" %}
+
+</body>
+
+</html>
