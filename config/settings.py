@@ -27,7 +27,8 @@ SECRET_KEY = "django-insecure-a*r5m&p2_8lb@6_c0!c1zuyr=@3ku=jsv95fjr=o(-6x=m%nkn
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = bool(os.environ.get("DEBUG"))
+# DEBUG = bool(os.environ.get("DEBUG"))
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -89,7 +90,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if DEBUG:
+if DEBUG == False:
 
     DATABASES = {
         "default": {
