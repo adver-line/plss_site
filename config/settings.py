@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-a*r5m&p2_8lb@6_c0!c1zuyr=@3ku=jsv95fjr=o(-6x=m%nkn
 # DEBUG = bool(os.environ.get("DEBUG"))
 DEBUG = True
 
-ALLOWED_HOSTS = ["plsssite.eba-nthf6i3g.ap-northeast-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["3.36.172.206"]
 
 
 # Application definition
@@ -113,11 +113,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
+}
 
 
 # Password validation
