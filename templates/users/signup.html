@@ -13,11 +13,11 @@
 
 
 
-        {% include 'mixins/auth/auth_form.html' with form=form cta="Sign up" %}
+        {% include 'mixins/auth/auth_form.html' with form=form cta="회원가입" %}
 
         <div class="mt-5">
-                <span class="mr-2">Have an account?</span>
-                <a href="{% url 'users:login' %}" class="text-green-500 font-medium">Log in</a>
+                <span class="mr-2">회원이시라면 로그인을 해주세요.</span>
+                <a href="{% url 'users:login' %}" class="text-green-500 font-medium">로그인</a>
             </div>
 
     </div>
