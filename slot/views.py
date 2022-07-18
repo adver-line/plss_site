@@ -57,8 +57,10 @@ class UpdateSlotView(
         form = super().get_form(form_class=form_class)
         form.fields[
             "serch_key"
-        ].label = "키워드 입력 \
-            (100타 당 키워드 1개 / 콤마 구분 - 캠핑, 캠핑의자, 캠핑체어)"
+        ].label = """제품 키워드 입력
+( 검색 순위 15위 이내로 세팅해주세요.
+// 100타 당 키워드 1개 콤마 구분 =>예) 캠핑, 캠핑의자, 캠핑체어
+// 세팅 안하시면 오버플 납니다.)"""
         form.fields["product_choices"].label = "단일 / 가격비교 상품 선택"
         form.fields["product_name"].label = "상품명(단일) or 원부명(가격비교)"
         form.fields["product_url"].label = "상품 링크 (가격비교는 원부주소)"
