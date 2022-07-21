@@ -51,6 +51,7 @@ PROJECT_APP = [
     "users.apps.UsersConfig",
     "slot.apps.SlotConfig",
     "core.apps.CoreConfig",
+    "key_change.apps.KeyChangeConfig"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APP + THIRD_PARTY_APPS

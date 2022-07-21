@@ -5,24 +5,12 @@ from django.views.generic import UpdateView, ListView
 from . import models
 
 
-# Create your views here.
-
-
 class HomeView(user_mixins.LoggedInOnlyView, ListView):
 
     model = models.Slot
     # paginate_by = 10
     ordering = "id"
     context_object_name = "slots"
-
-    # def get_slot(self, **kwargs):
-
-    # return queryset
-
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     queryset = queryset.object.get.
-    #     return queryset
 
 
 def slot_detail(request, pk):

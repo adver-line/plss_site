@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+
+{% block page_name %}키워드 인코딩 목록{% endblock page_name %}
+
+
+
+{% block content %}
+  {% if user.is_superuser %}
+
+    <div class="container mx-auto  pt-7">
+
+
+
+
+
+
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6">
+                    ID
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    클릭수
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    키워드
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    상품구분
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    상품명
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    슬롯 시작일
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    슬롯 종료일
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    바로가기
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+                {% for s in slots %}
+
+
+
+
+    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white border-b ">
+                    {{s.id}}
+                </th>
+                <td class="py-4 px-6">
+                    {{s.click_count}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.serch_key}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.product_choices}}
+                </td>
+                <td class="py-4 px-6">
+                     {{s.product_name}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.slot_start_date}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.slot_end_date}}
+                </td>
+                <td class="py-4 px-6">
+
+                <a href="{% url "key:key_encoding" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">이동</a>
+                </td>
+            </tr>
+
+
+
+    {% endfor %}
+            {% comment %} <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Microsoft Surface Pro
+                </th>
+                <td class="py-4 px-6">
+                    White
+                </td>
+                <td class="py-4 px-6">
+                    Laptop PC
+                </td>
+                <td class="py-4 px-6">
+                    $1999
+                </td>
+                <td class="py-4 px-6">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr> {% endcomment %}
+        </tbody>
+    </table>
+</div>
+
+    {% comment %} <h5>
+    {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+    {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+
+    </h5> {% endcomment %}
+
+    {% endif %}
+{% endblock content %}
+
+    </div>
