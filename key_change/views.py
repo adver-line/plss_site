@@ -29,6 +29,9 @@ def key_detail(request, pk):
         key_dic = {"key":key_word, "key_url":qu_key}
         re_keyword_list.append(key_dic)
 
+
+
     return render(request, "key_change/key_detail.html", {
-        "enc_keys":re_keyword_list
+        "enc_keys":re_keyword_list,
+        "slots":key_word_slot,
     })
