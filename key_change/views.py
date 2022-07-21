@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from slot import models
 import urllib.parse
 
@@ -9,7 +9,8 @@ def index(request):
 
 
 def key_detail(request, pk):
-    key_word_slot = models.Slot.objects.get(pk=pk)
+    key_word_slot = get_object_or_404(models.Slot, pk=pk)
+    # key_word_slot = models.Slot.objects.get(pk=pk)
     key_words = key_word_slot.serch_key
     # key_words = "".join(key_words)
     key_words = key_words.replace(", ", ",")
