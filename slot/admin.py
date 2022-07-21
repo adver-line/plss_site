@@ -36,6 +36,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
             "기간",
             {"fields": ("slot_start_date", "slot_end_date")},
         ),
+        (
+            "APP연동",
+            {"fields": ("order_num", "app_code")},
+        ),
     )
 
     list_display = (

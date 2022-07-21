@@ -48,7 +48,8 @@ class Slot(core_models.TimeStampedModel):
     slot_host = models.ForeignKey(
         users_models.User, related_name="slots", on_delete=models.CASCADE
     )
-
+    order_num = models.IntegerField(blank=True, null=True)
+    app_code = models.IntegerField(blank=True, null=True)
     # def save(self, *args, **kwargs):
     #     print(request.user)
     #     self.modyfi_check = True
