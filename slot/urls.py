@@ -9,5 +9,5 @@ app_name = "slot"
 
 
 urlpatterns = [
-    path("<int:pk>", views.UpdateSlotView.as_view(), name="detail"),
+    path("edit/<int:pk>/", views.UpdateSlotView.as_view(), name="detail"),
 ]

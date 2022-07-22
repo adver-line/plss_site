@@ -50,8 +50,6 @@
 
 
                 {% for s in slots %}
-                    {% if user == s.slot_host %}
-        
 
 
     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
@@ -82,42 +80,34 @@
                 </td>
             </tr>
 
-                    {% endif %}
-        
     {% endfor %}
-            {% comment %} <tr class="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="py-4 px-6">
-                    White
-                </td>
-                <td class="py-4 px-6">
-                    Laptop PC
-                </td>
-                <td class="py-4 px-6">
-                    $1999
-                </td>
-                <td class="py-4 px-6">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr> {% endcomment %}
+
         </tbody>
     </table>
 </div>
 
-    {% comment %} <h5>
+
+
+
+
+<div class="flex items-center justify-center mx-auto container py-4">
+
     {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+        <a href="?page={{page_obj.previous_page_number}}" class="text-blue-500">
+            <i class="fas fa-arrow-left fa-lg "></i>
+        </a>
     {% endif %}
 
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+            <span class="mx-3 font-medium text-lg">
+    페이지 {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+                </span>
 
     {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">Next</a>
+            <a href="?page={{page_obj.next_page_number}}" class="text-blue-500">  <i class="fas fa-arrow-right fa-lg"></i></a>
+
     {% endif %}
 
-    </h5> {% endcomment %}
+
 
 {% endblock content %}
 

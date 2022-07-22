@@ -1,11 +1,33 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+from users import mixins as user_mixins
 from slot import models
 import urllib.parse
 
+#
+# def index(request):
+#     slot = models.Slot.objects.all()
+#     return render(request, "key_change/key_list.html", {"slots": slot})
 
-def index(request):
-    slot = models.Slot.objects.all()
-    return render(request, "key_change/key_list.html", {"slots": slot})
+
+class KeyDetailView(user_mixins.LoggedInOnlyView, ListView):
+    model = models.Slot
+    paginate_by = 10
+    ordering = "id"
+    context_object_name = "slots"
+    template_name = "key_change/key_list.html"
+
+
+    # def get_queryset(self):
+    #     qs = super().get_queryset()
+    #     print(qs)
+    #     user = self.request.user
+    #     if not user.is_superuser:
+    #         qs = qs.filter(slot_host__email=user.email)
+    #     return qs
+
+
+
 
 
 def key_detail(request, pk):

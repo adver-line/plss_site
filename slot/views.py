@@ -8,9 +8,16 @@ from . import models
 class HomeView(user_mixins.LoggedInOnlyView, ListView):
 
     model = models.Slot
-    # paginate_by = 10
+    paginate_by = 10
     ordering = "id"
     context_object_name = "slots"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user = self.request.user
+        if not user.is_superuser:
+            qs = qs.filter(slot_host__email=user.email)
+        return qs
 
 
 def slot_detail(request, pk):
@@ -37,8 +44,9 @@ class UpdateSlotView(
 
     def get_object(self, queryset=None):
         slot = super().get_object(queryset=queryset)
-        if slot.slot_host.pk != self.request.user.pk:
-            raise Http404()
+        if not self.request.user.is_superuser:
+            if slot.slot_host.pk != self.request.user.pk:
+                raise Http404()
         return slot
 
     def get_form(self, form_class=None):

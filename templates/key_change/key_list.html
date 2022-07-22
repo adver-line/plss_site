@@ -41,7 +41,7 @@
                     슬롯 종료일
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    키워드변환 확인
+
                 </th>
             </tr>
         </thead>
@@ -105,21 +105,25 @@
         </tbody>
     </table>
 </div>
-
-    {% comment %} <h5>
-    {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
     {% endif %}
 
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+<div class="flex items-center justify-center mx-auto container py-4">
+
+    {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}" class="text-blue-500">
+            <i class="fas fa-arrow-left fa-lg "></i>
+        </a>
+    {% endif %}
+
+            <span class="mx-3 font-medium text-lg">
+    페이지 {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+                </span>
 
     {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">Next</a>
-    {% endif %}
-
-    </h5> {% endcomment %}
+            <a href="?page={{page_obj.next_page_number}}" class="text-blue-500">  <i class="fas fa-arrow-right fa-lg"></i></a>
 
     {% endif %}
+
+{#    <a href="?page={{page_obj.paginator.num_pages}}" class="text-blue-500 px-20">마지막 페이지 바로가기</a>#}
+
 {% endblock content %}
-
-    </div>
