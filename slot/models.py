@@ -1,9 +1,12 @@
 from urllib import request
 from django.db import models
 from django.utils import timezone
+from django.utils.safestring import mark_safe
+
 from core import models as core_models
 from users import models as users_models
 from django.shortcuts import reverse
+import urllib.parse
 
 
 # Create your models here.
@@ -69,8 +72,13 @@ class Slot(core_models.TimeStampedModel):
         now = timezone.now().date()
         return now > self.slot_end_date
 
-    is_finished.short_description = "슬롯 끝남"
+    is_finished.short_description = "슬롯 종료 여부"
     is_finished.boolean = True
+
+    def app_link(self):
+        pk = self.pk
+        return mark_safe(f"<a href='/key_change/{pk}'>바로가기</a>")
+
 
     class Meta:
         verbose_name_plural = "실유저 슬롯 관리"

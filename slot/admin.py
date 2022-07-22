@@ -47,7 +47,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         "slot_host",
         "click_count",
         "serch_key",
-        "product_choices",
+        # "product_choices",
         "product_name",
         # "modyfi_check",
         "slot_start_date",
@@ -55,6 +55,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         "in_progress",
         "is_finished",
         "update",
+        "app_link",
     )
     # models.slot_host.short_description = "아이디"
 
