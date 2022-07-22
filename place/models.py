@@ -1,17 +1,14 @@
-from urllib import request
 from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-
 from core import models as core_models
 from users import models as users_models
 from django.shortcuts import reverse
 
 
-# Create your models here.
-class Slot(core_models.TimeStampedModel):
+class PlaceClick(core_models.TimeStampedModel):
 
-    """Slot Models"""
+    """플레이스 트래픽 모델"""
 
     DAY3 = "3일"
     DAY7 = "7일"
@@ -27,35 +24,18 @@ class Slot(core_models.TimeStampedModel):
         (DAY30, "30일"),
     )
 
-    PRODUCT_NUM1 = "단일상품"
-    PRODUCT_NUM2 = "가격비교상품"
-
-    PRODUCT_CHOICES = (
-        (PRODUCT_NUM1, "단일상품"),
-        (PRODUCT_NUM2, "가격비교상품"),
-    )
-
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
     click_count = models.IntegerField(blank=False)
     serch_key = models.CharField(max_length=100, default="", blank=True, null=True)
-    product_choices = models.CharField(
-        choices=PRODUCT_CHOICES, max_length=6, blank=True, null=True
-    )
-    product_name = models.CharField(max_length=100, blank=True, null=True)
-    product_url = models.CharField(max_length=200, blank=True, null=True)
     store_names = models.CharField(max_length=100, blank=True, null=True)
+    product_url = models.CharField(max_length=200, blank=True, null=True)
     modyfi_check = models.BooleanField(default=True)
     slot_start_date = models.DateField()
     slot_end_date = models.DateField()
     slot_host = models.ForeignKey(
-        users_models.User, related_name="slots", on_delete=models.CASCADE
+        users_models.User, related_name="place_click_slot", on_delete=models.CASCADE
     )
-    order_num = models.IntegerField(blank=True, null=True)
-    app_code = models.IntegerField(blank=True, null=True)
-    # def save(self, *args, **kwargs):
-    #     print(request.user)
-    #     self.modyfi_check = True
-    #     super().save(*args, **kwargs)  # Call the real save() method
+    app_code_str = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -78,9 +58,8 @@ class Slot(core_models.TimeStampedModel):
         pk = self.pk
         return mark_safe(f"<a href='/key_change/{pk}'>바로가기</a>")
 
-
     class Meta:
-        verbose_name_plural = "실유저 슬롯 관리"
+        verbose_name_plural = "플레이스 트래픽 슬롯 관리"
         ordering = ["id"]
         # verbose_name_pu
 

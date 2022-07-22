@@ -1,7 +1,7 @@
 from django.urls import path
-from slot import views
+from . import views
 
-app_name = "slot"
+app_name = "place"
 
 # urlpatterns = [
 #     path("<int:pk>", views.slot_detail, name="detail"),
@@ -9,6 +9,7 @@ app_name = "slot"
 
 
 urlpatterns = [
-    path("list/", views.HomeView.as_view(), name="slot_list"),
+    path("click/", views.PlaceSlotView.as_view(), name="click"),
     path("edit/<int:pk>/", views.UpdateSlotView.as_view(), name="detail"),
+
 ]

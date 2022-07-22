@@ -10,10 +10,6 @@
 
     <div class="container mx-auto  pt-7">
 
-  
-
-
-
 
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,24 +25,18 @@
                     키워드
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    상품구분
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    상품명
-                </th>
-                <th scope="col" class="py-3 px-6">
                     슬롯 시작일
                 </th>
                 <th scope="col" class="py-3 px-6">
                     슬롯 종료일
                 </th>
                 <th scope="col" class="py-3 px-6">
-
-                </th>                                                   
+                    수정하기
+                </th>
             </tr>
         </thead>
         <tbody>
-        
+
 
 
                 {% for s in slots %}
@@ -63,20 +53,14 @@
                     {{s.serch_key}}
                 </td>
                 <td class="py-4 px-6">
-                    {{s.product_choices}}
-                </td>
-                <td class="py-4 px-6">
-                     {{s.product_name}}
-                </td>
-                <td class="py-4 px-6">
                     {{s.slot_start_date}}
                 </td>
                 <td class="py-4 px-6">
                     {{s.slot_end_date}}
-                </td>                                                  
+                </td>
                 <td class="py-4 px-6">
 
-                <a href="{% url "slot:detail" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="{% url "place:detail" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
             </tr>
 
