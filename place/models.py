@@ -71,18 +71,18 @@ class PlaceSave(core_models.TimeStampedModel):
 
     """플레이스 트래픽 모델"""
 
-    # DAY3 = "3일"
-    # DAY7 = "7일"
+    DAY3 = "3일"
+    DAY7 = "7일"
     DAY10 = "10일"
-    # DAY20 = "20일"
-    # DAY30 = "30일"
+    DAY20 = "20일"
+    DAY30 = "30일"
 
     DAY_CHOICES = (
-        # (DAY3, "3일"),
-        # (DAY7, "7일"),
+        (DAY3, "3일"),
+        (DAY7, "7일"),
         (DAY10, "10일"),
-        # (DAY20, "20일"),
-        # (DAY30, "30일"),
+        (DAY20, "20일"),
+        (DAY30, "30일"),
     )
 
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
@@ -132,18 +132,18 @@ class PlaceKeep(core_models.TimeStampedModel):
 
     """플레이스 트래픽 모델"""
 
-    # DAY3 = "3일"
-    # DAY7 = "7일"
+    DAY3 = "3일"
+    DAY7 = "7일"
     DAY10 = "10일"
-    # DAY20 = "20일"
-    # DAY30 = "30일"
+    DAY20 = "20일"
+    DAY30 = "30일"
 
     DAY_CHOICES = (
-        # (DAY3, "3일"),
-        # (DAY7, "7일"),
+        (DAY3, "3일"),
+        (DAY7, "7일"),
         (DAY10, "10일"),
-        # (DAY20, "20일"),
-        # (DAY30, "30일"),
+        (DAY20, "20일"),
+        (DAY30, "30일"),
     )
 
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
