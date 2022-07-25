@@ -47,7 +47,7 @@ class UpdateSlotView(
         form = super().get_form(form_class=form_class)
         form.fields[
             "serch_key"
-        ].label = """방문 유입 키워드(검색 시 15위 이내 키워드로 세팅해 주세요)"""
+        ].label = """방문 유입 키워드(검색 시 30위 이내 키워드로 세팅해 주세요)"""
 
 
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
@@ -77,7 +77,6 @@ class UpdateSlotSaveView(
 
     model = models.PlaceSave
     fields = (
-        "serch_key",
         "product_url",
         "store_names",
     )
@@ -95,10 +94,6 @@ class UpdateSlotSaveView(
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
-        form.fields[
-            "serch_key"
-        ].label = """방문 유입 키워드(검색 시 15위 이내 키워드로 세팅해 주세요)"""
-
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
         return form
@@ -127,7 +122,6 @@ class UpdateSlotKeepView(
 
     model = models.PlaceKeep
     fields = (
-        "serch_key",
         "product_url",
         "store_names",
     )
@@ -145,10 +139,6 @@ class UpdateSlotKeepView(
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
-        form.fields[
-            "serch_key"
-        ].label = """방문 유입 키워드(검색 시 15위 이내 키워드로 세팅해 주세요)"""
-
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
         return form
