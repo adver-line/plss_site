@@ -1,15 +1,16 @@
 
-<ul class="flex items-center text-sm font-medium h-full ">
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "slot:slot_list" %}">실유저 트래픽</a></li>
+<ul class="flex items-center text-sm font-medium h-full active:bg-white ">
+    <li class="text-gray-300 target:shadow-lg hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "slot:slot_list" %}">실유저 트래픽</a></li>
     <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:click" %}">플레이스 트래픽</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="">플레이스 저장하기</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="">플레이스 KEEP</a></li>
-{#    {% if user.is_superuser %}#}
-{#        <li class="nav_link"><a href="{% url "key:key_list" %}">키워드 인코딩</a></li>#}
-{#    {% endif %}#}
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:save" %}">플레이스 저장하기</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:keep" %}">플레이스 KEEP</a></li>
+
 </ul>
 <ul class="flex items-center text-sm font-medium h-full ">
     {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a href="/admin/">어드민</a></li>
+    {% endif %}
         <!-- <li class="nav_link m-8 border-b-2 border-white h-full flex items-center hover:border-gray-600"><a href="{{User.get_absolute_url}}">내정보</a></li> -->
         <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a href="{{user.get_absolute_url}}">프로필</a></li>
         <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a href="{% url "users:logout" %}">로그아웃</a></li>

@@ -1,4 +1,6 @@
+
 {% extends "base.html" %}
+{% load bootstrap5 %}
 
 
 {% block page_name %}HOME{% endblock page_name %}
@@ -7,74 +9,66 @@
 
 {% block content %}
 
+<div class="container mx-auto pt-7">
+    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="py-3 px-6 ">
+                        ID
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
+                        클릭수
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
+                        슬롯 기간
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
+                        상품 구분
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        상품명
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
+                        슬롯 시작일
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
+                        슬롯 종료일
+                    </th>
+                    <th scope="col" class="py-3 px-6 ">
 
-    <div class="container mx-auto  pt-7">
-
-  
-
-
-
-
-<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="py-3 px-6">
-                    ID
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    클릭수
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    키워드
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    상품구분
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    상품명
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    슬롯 시작일
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    슬롯 종료일
-                </th>
-                <th scope="col" class="py-3 px-6">
-
-                </th>                                                   
-            </tr>
-        </thead>
-        <tbody>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
         
 
 
                 {% for s in slots %}
 
-
-    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white border-b ">
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 odd:bg-gray-100 ">
+                <th scope="row" class="py-4 px-6 font-medium odd:bg-gray-100 text-gray-900 whitespace-nowrap dark:text-white border-b ">
                     {{s.id}}
                 </th>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6 ">
                     {{s.click_count}}
                 </td>
-                <td class="py-4 px-6">
-                    {{s.serch_key}}
+                <td class="py-4 px-6  ">
+                    {{s.day_count}}
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6  ">
                     {{s.product_choices}}
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6 ">
                      {{s.product_name}}
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6  ">
                     {{s.slot_start_date}}
                 </td>
-                <td class="py-4 px-6">
+                <td class="py-4 px-6  ">
                     {{s.slot_end_date}}
                 </td>                                                  
-                <td class="py-4 px-6">
+                <td class="py-4 px-6 ">
 
                 <a href="{% url "slot:detail" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
@@ -91,24 +85,29 @@
 
 
 <div class="flex items-center justify-center mx-auto container py-4">
-
-    {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}" class="text-blue-500">
-            <i class="fas fa-arrow-left fa-lg "></i>
-        </a>
+   {% if page_obj %}
+    {% bootstrap_pagination page_obj %}
     {% endif %}
 
-            <span class="mx-3 font-medium text-lg">
-    페이지 {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-                </span>
-
-    {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}" class="text-blue-500">  <i class="fas fa-arrow-right fa-lg"></i></a>
-
-    {% endif %}
-
-
-
-{% endblock content %}
+{#    {% if page_obj.has_previous %}#}
+{#        <a href="?page={{page_obj.previous_page_number}}" class="text-blue-500">#}
+{#            <i class="fas fa-arrow-left fa-lg "></i>#}
+{##}
+{# #}
+{#        </a>#}
+{#    {% endif %}#}
+{##}
+{#            <span class="mx-3 font-medium text-lg">#}
+{#                페이지 {{page_obj.number}} of {{page_obj.paginator.num_pages}}#}
+{#                </span>#}
+{##}
+{#    {% if page_obj.has_next %}#}
+{#            <a href="?page={{page_obj.next_page_number}}" class="text-blue-500">  <i class="fas fa-arrow-right fa-lg"></i></a>#}
+{##}
+{##}
+{#    {% endif %}#}
 
     </div>
+    </div>
+{% endblock content %}
+

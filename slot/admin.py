@@ -38,7 +38,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         ),
         (
             "APP연동",
-            {"fields": ("order_num", "app_code")},
+            {"fields": ("order_num", "app_code",)},
         ),
     )
 

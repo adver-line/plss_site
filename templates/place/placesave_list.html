@@ -66,7 +66,7 @@
                 </td>
                 <td class="py-4 px-6">
 
-                <a href="{% url "place:click_edit" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="{% url "place:save_edit" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
             </tr>
 
@@ -81,9 +81,11 @@
 
 
 <div class="flex items-center justify-center mx-auto container py-4">
-   {% if page_obj %}
-    {% bootstrap_pagination page_obj %}
+
+    {% if page_obj %}
+        {% bootstrap_pagination page_obj %}
     {% endif %}
+
     </div>
     </div>
 
