@@ -64,6 +64,7 @@ class Slot(core_models.TimeStampedModel):
     order_num = models.IntegerField(blank=True, null=True)
     app_code = models.IntegerField(blank=True, null=True)
     slot_status = models.CharField(choices=SLOT_CHOICES, default="SLOT_STATUS", blank=True, null=True, max_length=6)
+    changed_memo = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id)

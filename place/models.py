@@ -49,6 +49,7 @@ class PlaceClick(core_models.TimeStampedModel):
     )
     app_code_str = models.CharField(max_length=100, blank=True, null=True)
     slot_status = models.CharField(choices=SLOT_CHOICES, default="SLOT_STATUS", blank=True, null=True, max_length=6)
+    changed_memo = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -86,6 +87,8 @@ class PlaceClick(core_models.TimeStampedModel):
         return re_text
 
     return_id_corp.short_description = "아이디//회사명"
+
+
 
 
 class PlaceSave(core_models.TimeStampedModel):
@@ -131,6 +134,7 @@ class PlaceSave(core_models.TimeStampedModel):
     )
     app_code_str = models.CharField(max_length=100, blank=True, null=True)
     slot_status = models.CharField(choices=SLOT_CHOICES, default="SLOT_STATUS", blank=True, null=True, max_length=6)
+    changed_memo = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -213,6 +217,7 @@ class PlaceKeep(core_models.TimeStampedModel):
     )
     app_code_str = models.CharField(max_length=100, blank=True, null=True)
     slot_status = models.CharField(choices=SLOT_CHOICES, default="SLOT_STATUS", blank=True, null=True, max_length=6)
+    changed_memo = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -250,3 +255,4 @@ class PlaceKeep(core_models.TimeStampedModel):
         return re_text
 
     return_id_corp.short_description = "아이디//회사명"
+

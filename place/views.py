@@ -49,10 +49,30 @@ class UpdateSlotView(
             "serch_key"
         ].label = """방문 유입 키워드(검색 시 30위 이내 키워드로 세팅해 주세요)"""
 
-
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
         return form
+
+    def form_valid(self, form):
+        id_s = self.object.pk
+        last = models.PlaceClick.objects.get(pk=id_s)
+        change_str = ""
+
+        if last.serch_key != self.object.serch_key:
+            change_str = change_str + f'키워드 변경 [{last.serch_key}] => [{self.object.serch_key}] \n'
+            self.object.modyfi_check = True
+
+        if last.product_url != self.object.product_url:
+            change_str = change_str + f'상품 url 변경 [{last.product_url}] => [{self.object.product_url}] \n'
+            self.object.modyfi_check = True
+
+        if last.store_names != self.object.store_names:
+            change_str = change_str + f'스토어명 변경 [{last.store_names}] => [{self.object.store_names}] \n'
+            self.object.modyfi_check = True
+
+        self.object.changed_memo = change_str
+        self.object.save()
+        return super().form_valid(form)
 
 
 class PlaceSlotSaveView(user_mixins.LoggedInOnlyView, ListView):
@@ -98,6 +118,23 @@ class UpdateSlotSaveView(
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
         return form
 
+    def form_valid(self, form):
+        id_s = self.object.pk
+        last = models.PlaceSave.objects.get(pk=id_s)
+        change_str = ""
+
+        if last.product_url != self.object.product_url:
+            change_str = change_str + f'상품 url 변경 [{last.product_url}] => [{self.object.product_url}] \n'
+            self.object.modyfi_check = True
+
+        if last.store_names != self.object.store_names:
+            change_str = change_str + f'스토어명 변경 [{last.store_names}] => [{self.object.store_names}] \n'
+            self.object.modyfi_check = True
+
+        self.object.changed_memo = change_str
+        self.object.save()
+        return super().form_valid(form)
+
 
 class PlaceSlotKeepView(user_mixins.LoggedInOnlyView, ListView):
 
@@ -142,3 +179,22 @@ class UpdateSlotKeepView(
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
         return form
+
+    def form_valid(self, form):
+        id_s = self.object.pk
+        last = models.PlaceKeep.objects.get(pk=id_s)
+        change_str = ""
+
+        if last.product_url != self.object.product_url:
+            print(f'상품 url 변경 : [{last.product_url}] => [{self.object.product_url}]')
+            change_str = change_str + f'상품 url 변경 [{last.product_url}] => [{self.object.product_url}] \n'
+            self.object.modyfi_check = True
+
+        if last.store_names != self.object.store_names:
+            print(f'스토어명 변경 : [{last.store_names}] => [{self.object.store_names}]')
+            change_str = change_str + f'스토어명 변경 [{last.store_names}] => [{self.object.store_names}] \n'
+            self.object.modyfi_check = True
+
+        self.object.changed_memo = change_str
+        self.object.save()
+        return super().form_valid(form)

@@ -46,7 +46,12 @@ class CustomSlotAdmin(admin.ModelAdmin):
             "APP연동",
             {"fields": ("order_num", "app_code",)},
         ),
+        (
+            "변경 메모",
+            {"fields": ("changed_memo",)},
+        ),
     )
+
 
     list_display = (
         "id",
@@ -56,7 +61,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         "serch_key",
         # "product_choices",
         "product_name",
-        # "modyfi_check",
+        "modyfi_check",
         "slot_start_date",
         "slot_end_date",
         # "in_progress",

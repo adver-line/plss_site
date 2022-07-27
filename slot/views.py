@@ -62,3 +62,34 @@ class UpdateSlotView(
         form.fields["product_url"].label = "상품 링크 (가격비교는 원부주소)"
         form.fields["store_names"].label = "판매처 (가격비교는 판매처 이름 작성)"
         return form
+
+    def form_valid(self, form):
+        id_s = self.object.pk
+        last = models.Slot.objects.get(pk=id_s)
+        change_str = ""
+
+        if last.serch_key != self.object.serch_key:
+            change_str = change_str + f'키워드 변경 [{last.serch_key}] => [{self.object.serch_key}] \n'
+            self.object.modyfi_check = True
+
+        if last.product_choices != self.object.product_choices:
+            change_str = change_str + f'상품선택 변경 [{last.product_choices}] => [{self.object.product_choices}] \n'
+            self.object.modyfi_check = True
+
+        if last.product_name != self.object.product_name:
+            change_str = change_str + f'상품명 변경 [{last.product_name}] => [{self.object.product_name}] \n'
+            self.object.modyfi_check = True
+
+        if last.product_url != self.object.product_url:
+            change_str = change_str + f'상품 url 변경 [{last.product_url}] => [{self.object.product_url}] \n'
+            self.object.modyfi_check = True
+
+        if last.store_names != self.object.store_names:
+            change_str = change_str + f'스토어명 변경 [{last.store_names}] => [{self.object.store_names}] \n'
+            self.object.modyfi_check = True
+
+        self.object.changed_memo = change_str
+        self.object.save()
+        return super().form_valid(form)
+
+

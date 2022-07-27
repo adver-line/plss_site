@@ -40,6 +40,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
             "APP연동",
             {"fields": ("app_code_str",)},
         ),
+        (
+            "변경 메모",
+            {"fields": ("changed_memo",)},
+        ),
     )
 
     list_display = (
@@ -113,6 +117,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
             "APP연동",
             {"fields": ("app_code_str",)},
         ),
+        (
+            "변경 메모",
+            {"fields": ("changed_memo",)},
+        ),
     )
 
     list_display = (
@@ -179,6 +187,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
             (
                 "APP연동",
                 {"fields": ("app_code_str",)},
+            ),
+            (
+                "변경 메모",
+                {"fields": ("changed_memo",)},
             ),
         )
 
