@@ -1,8 +1,7 @@
-from urllib import request
+
 from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-
 from core import models as core_models
 from users import models as users_models
 from django.shortcuts import reverse
@@ -35,6 +34,18 @@ class Slot(core_models.TimeStampedModel):
         (PRODUCT_NUM2, "가격비교상품"),
     )
 
+    SLOT_STATUS = "대기"
+    SLOT_STATUS1 = "진행"
+    SLOT_STATUS2 = "중지"
+    SLOT_STATUS3 = "종료"
+
+    SLOT_CHOICES = (
+        (SLOT_STATUS , "대기"),
+        (SLOT_STATUS1, "진행"),
+        (SLOT_STATUS2, "중지"),
+        (SLOT_STATUS3, "종료"),
+    )
+
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
     click_count = models.IntegerField(blank=False)
     serch_key = models.CharField(max_length=100, default="", blank=True, null=True)
@@ -44,7 +55,7 @@ class Slot(core_models.TimeStampedModel):
     product_name = models.CharField(max_length=100, blank=True, null=True)
     product_url = models.CharField(max_length=200, blank=True, null=True)
     store_names = models.CharField(max_length=100, blank=True, null=True)
-    modyfi_check = models.BooleanField(default=True)
+    modyfi_check = models.BooleanField(default=False)
     slot_start_date = models.DateField()
     slot_end_date = models.DateField()
     slot_host = models.ForeignKey(
@@ -52,10 +63,7 @@ class Slot(core_models.TimeStampedModel):
     )
     order_num = models.IntegerField(blank=True, null=True)
     app_code = models.IntegerField(blank=True, null=True)
-    # def save(self, *args, **kwargs):
-    #     print(request.user)
-    #     self.modyfi_check = True
-    #     super().save(*args, **kwargs)  # Call the real save() method
+    slot_status = models.CharField(choices=SLOT_CHOICES, default="SLOT_STATUS", blank=True, null=True, max_length=6)
 
     def __str__(self):
         return str(self.id)
@@ -84,5 +92,16 @@ class Slot(core_models.TimeStampedModel):
         ordering = ["id"]
         # verbose_name_pu
 
+
     def get_absolute_url(self):
         return reverse("core:home")
+
+    def return_id_corp(self):
+        host = self.slot_host
+        corp = host.corpname
+        re_text = f'{host} \n {corp}'
+        return re_text
+
+    return_id_corp.short_description = "아이디//회사명"
+
+

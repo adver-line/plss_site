@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.contrib import admin
 from . import models
 
@@ -10,6 +9,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
         (
             "슬롯 등록 아이디",
             {"fields": ("slot_host",)},
+        ),
+        (
+            "슬롯 상태",
+            {"fields": ("slot_status",)},
         ),
         (
             "날짜 및 타수",
@@ -41,19 +44,20 @@ class CustomSlotAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
-        "slot_host",
+        "return_id_corp",
+        "slot_status",
         "click_count",
         "serch_key",
         "slot_start_date",
         "slot_end_date",
-        "in_progress",
-        "is_finished",
+        "modyfi_check",
         "update",
         "app_link",
     )
     # models.slot_host.short_description = "아이디"
 
     list_filter = (
+        "slot_status",
         "modyfi_check",
         "slot_end_date",
         "update",
@@ -62,7 +66,6 @@ class CustomSlotAdmin(admin.ModelAdmin):
 
     # search_fields = ("product_name",)
     search_fields = ("slot_host__username", "pk")
-
     raw_id_fields = ("slot_host",)
     verbose_name = "플레이스 트래픽 관리"
 
@@ -80,6 +83,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
         (
             "슬롯 등록 아이디",
             {"fields": ("slot_host",)},
+        ),
+        (
+            "슬롯 상태",
+            {"fields": ("slot_status",)},
         ),
         (
             "날짜 및 타수",
@@ -110,18 +117,19 @@ class CustomSlotAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
-        "slot_host",
+        "return_id_corp",
+        "slot_status",
         "click_count",
         "slot_start_date",
         "slot_end_date",
-        "in_progress",
-        "is_finished",
+        "modyfi_check",
         "update",
         "app_link",
     )
     # models.slot_host.short_description = "아이디"
 
     list_filter = (
+        "slot_status",
         "modyfi_check",
         "slot_end_date",
         "update",
@@ -142,6 +150,10 @@ class CustomSlotAdmin(admin.ModelAdmin):
             (
                 "슬롯 등록 아이디",
                 {"fields": ("slot_host",)},
+            ),
+            (
+                "슬롯 상태",
+                {"fields": ("slot_status",)},
             ),
             (
                 "날짜 및 타수",
@@ -172,28 +184,24 @@ class CustomSlotAdmin(admin.ModelAdmin):
 
         list_display = (
             "id",
-            "slot_host",
+            "return_id_corp",
+            "slot_status",
             "click_count",
             "slot_start_date",
             "slot_end_date",
-            "in_progress",
-            "is_finished",
+            "modyfi_check",
             "update",
             "app_link",
         )
         # models.slot_host.short_description = "아이디"
 
         list_filter = (
+            "slot_status",
             "modyfi_check",
             "slot_end_date",
             "update",
             "slot_host",
         )
 
-        # search_fields = ("product_name",)
         search_fields = ("slot_host__username", "pk")
-
         raw_id_fields = ("slot_host",)
-        # verbose_name = "실유저 슬롯 관리"
-
-        # fieldsets = UserAdmin.fieldsets + (("회사명", {"fields": ("corpname",)}),)

@@ -7,10 +7,16 @@ from . import models
 @admin.register(models.Slot)
 class CustomSlotAdmin(admin.ModelAdmin):
 
+
+
     fieldsets = (
         (
             "슬롯 등록 아이디",
             {"fields": ("slot_host",)},
+        ),
+        (
+            "슬롯 상태",
+            {"fields": ("slot_status",)},
         ),
         (
             "날짜 및 타수",
@@ -44,7 +50,8 @@ class CustomSlotAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
-        "slot_host",
+        "return_id_corp",
+        "slot_status",
         "click_count",
         "serch_key",
         # "product_choices",
@@ -52,14 +59,16 @@ class CustomSlotAdmin(admin.ModelAdmin):
         # "modyfi_check",
         "slot_start_date",
         "slot_end_date",
-        "in_progress",
-        "is_finished",
+        # "in_progress",
+        # "is_finished",
         "update",
         "app_link",
+
     )
     # models.slot_host.short_description = "아이디"
 
     list_filter = (
+        "slot_status",
         "modyfi_check",
         "slot_end_date",
         "update",
