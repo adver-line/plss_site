@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block page_name %}웹사이트 트래픽{% endblock page_name %}
+
+
+
+{% block content %}
+
+
+    <div class="container mx-auto  pt-7">
+
+
+<div class="overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6">
+                    ID
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    클릭수
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    슬롯 기간
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    키워드
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    슬롯 시작일
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    슬롯 종료일
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    수정하기
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+                {% for s in slots %}
+
+
+    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white border-b ">
+                    {{s.id}}
+                </th>
+                <td class="py-4 px-6">
+                    {{s.click_count}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.day_count}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.serch_key}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.slot_start_date}}
+                </td>
+                <td class="py-4 px-6">
+                    {{s.slot_end_date}}
+                </td>
+                <td class="py-4 px-6">
+
+                <a href="{% url "site:web_click_edit" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+
+    {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<div class="flex items-center justify-center mx-auto container py-4">
+   {% if page_obj %}
+    {% bootstrap_pagination page_obj %}
+    {% endif %}
+    </div>
+    </div>
+
+{% endblock content %}
+

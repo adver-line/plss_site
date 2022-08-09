@@ -74,6 +74,15 @@ class UpdateSlotView(
         self.object.save()
         return super().form_valid(form)
 
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("site:web_click")
+
+
+
 
 class PlaceSlotSaveView(user_mixins.LoggedInOnlyView, ListView):
 
@@ -134,6 +143,14 @@ class UpdateSlotSaveView(
         self.object.changed_memo = change_str
         self.object.save()
         return super().form_valid(form)
+
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("site:web_click")
+
 
 
 class PlaceSlotKeepView(user_mixins.LoggedInOnlyView, ListView):
@@ -198,3 +215,11 @@ class UpdateSlotKeepView(
         self.object.changed_memo = change_str
         self.object.save()
         return super().form_valid(form)
+
+
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("site:web_click")
