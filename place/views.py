@@ -1,8 +1,10 @@
 from django.http import Http404
+from django.urls import reverse_lazy
+
 from users import mixins as user_mixins
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import UpdateView, ListView
-from . import models
+from django.views.generic import UpdateView, ListView, FormView
+from . import models, forms
 
 
 class PlaceSlotView(user_mixins.LoggedInOnlyView, ListView):
@@ -79,7 +81,28 @@ class UpdateSlotView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:web_click")
+            return reverse("site:click")
+
+
+class PlaceClickCreateView(
+    user_mixins.LoggedInOnlyView,
+    FormView,
+):
+
+    template_name = "place/create-slot-click.html"
+    form_class = forms.PlaceSlotCreateForm
+    success_url = reverse_lazy("place:click")
+
+    # initial = {"first_name": "pk", "last_name": "yo", "email": "la@las.com"}
+
+    def form_valid(self, form):
+        slot = form.save()
+        slot.slot_host = self.request.user
+        slot.save()
+
+        return redirect(reverse("place:click"))
+
+
 
 
 
@@ -149,7 +172,7 @@ class UpdateSlotSaveView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:web_click")
+            return reverse("site:save")
 
 
 
@@ -222,4 +245,4 @@ class UpdateSlotKeepView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:web_click")
+            return reverse("site:keep")
