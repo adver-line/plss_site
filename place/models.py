@@ -38,7 +38,7 @@ class PlaceClick(core_models.TimeStampedModel):
 
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
     click_count = models.IntegerField(blank=False)
-    serch_key = models.CharField(max_length=100, default="", blank=True, null=True)
+    serch_key = models.CharField(max_length=1000, default="", blank=True, null=True)
     store_names = models.CharField(max_length=100, blank=True, null=True)
     product_url = models.CharField(max_length=200, blank=True, null=True)
     modyfi_check = models.BooleanField(default=False)

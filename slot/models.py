@@ -48,7 +48,7 @@ class Slot(core_models.TimeStampedModel):
 
     day_count = models.CharField(choices=DAY_CHOICES, max_length=3, blank=False)
     click_count = models.IntegerField(blank=False)
-    serch_key = models.CharField(max_length=100, default="", blank=True, null=True)
+    serch_key = models.CharField(max_length=1000, default="", blank=True, null=True)
     product_choices = models.CharField(
         choices=PRODUCT_CHOICES, max_length=6, blank=True, null=True
     )
