@@ -82,7 +82,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
     )
 
     # search_fields = ("product_name",)
-    search_fields = ("slot_host__username",)
+    search_fields = ("slot_host__username","product_name",)
 
     raw_id_fields = ("slot_host",)
     # verbose_name = "실유저 슬롯 관리"
