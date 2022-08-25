@@ -1,12 +1,16 @@
 
+
 <ul class="flex items-center text-sm font-medium h-full active:bg-white ">
-    <li class="text-gray-300 target:shadow-lg hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "slot:slot_list" %}">쇼핑 실소비자 유입</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:click" %}">플레이스 실소비자 유입</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:save" %}">플레이스 저장하기</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "place:keep" %}">플레이스 KEEP</a></li>
-    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "site:web_click" %}">웹사이트 실소비자 유입</a></li>
+    <li class="text-gray-300 target:shadow-lg hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "slot:slot_list" %}">쇼핑 실소비자 유입</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "place:click" %}">플레이스 실소비자 유입</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "place:save" %}">플레이스 저장하기</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "place:keep" %}">플레이스 KEEP</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "site:web_click" %}">웹사이트 실소비자 유입</a></li>
+    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "slot_moo:slot_moo_list" %}">쇼핑 무한타</a></li>
 
 </ul>
+
+
 <ul class="flex items-center text-sm font-medium h-full ">
     {% if user.is_authenticated %}
     {% if user.is_superuser %}
@@ -16,9 +20,8 @@
         <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a href="{{user.get_absolute_url}}">프로필</a></li>
         <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a href="{% url "users:logout" %}">로그아웃</a></li>
     {% else %}
-
-        <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "users:login" %}">로그인</a></li>
-        <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="py-10 px-5" href="{% url "users:signup" %}">회원가입</a></li>
+        <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "users:login" %}">로그인</a></li>
+        <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><a class="" href="{% url "users:signup" %}">회원가입</a></li>
     {% endif %}
 </ul>
 

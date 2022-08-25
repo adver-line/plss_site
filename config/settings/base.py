@@ -56,6 +56,7 @@ PROJECT_APP = [
     "key_change.apps.KeyChangeConfig",
     "place.apps.PlaceConfig",
     "site_trafic.apps.SiteTraficConfig",
+    "slot_moo.apps.SlotMooConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APP + THIRD_PARTY_APPS

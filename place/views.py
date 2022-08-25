@@ -81,7 +81,7 @@ class UpdateSlotView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:click")
+            return reverse("place:click")
 
 
 class PlaceClickCreateView(
@@ -172,7 +172,7 @@ class UpdateSlotSaveView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:save")
+            return reverse("place:save")
 
 
 
@@ -245,4 +245,4 @@ class UpdateSlotKeepView(
         if next_arg is not None:
             return next_arg
         else:
-            return reverse("site:keep")
+            return reverse("place:keep")

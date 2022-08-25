@@ -38,5 +38,6 @@ class PlaceSlotCreateForm(forms.ModelForm):
             slot.slot_end_date = now + timedelta(days=30)
 
         slot.modyfi_check = True
+        slot.slot_status = "대기"
 
         return slot
