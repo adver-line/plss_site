@@ -35,9 +35,9 @@
                     <th scope="col" class="py-3 px-6 ">
                         슬롯 종료일
                     </th>
-                    <th scope="col" class="py-3 px-6 ">
-                        수정하기
-                    </th>
+{#                    <th scope="col" class="py-3 px-6 ">#}
+{#                        수정하기#}
+{#                    </th>#}
                 </tr>
             </thead>
             <tbody>
@@ -65,10 +65,10 @@
                 <td class="py-4 px-6  ">
                     {{s.slot_end_date}}
                 </td>                                                  
-                <td class="py-4 px-6 ">
-
-                <a href="{% url "slot_moo:slot_moo_detail" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
+{#                <td class="py-4 px-6 ">#}
+{##}
+{#                <a href="{% url "slot_moo:slot_moo_detail" s.pk %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>#}
+{#                </td>#}
             </tr>
 
     {% endfor %}
