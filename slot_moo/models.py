@@ -54,7 +54,7 @@ class SlotMoo(core_models.TimeStampedModel):
     # )
     # product_name = models.CharField(max_length=100, blank=True, null=True)
     product_url = models.CharField(max_length=200, blank=True, null=True)
-    product_mid = models.CharField(max_length=10, blank=True, null=True)
+    product_mid = models.CharField(max_length=20, blank=True, null=True)
     # store_names = models.CharField(max_length=100, blank=True, null=True)
     modyfi_check = models.BooleanField(default=False)
     slot_start_date = models.DateField()
