@@ -41,7 +41,7 @@ def key_detail(request, pk):
         qu_key = urllib.parse.quote(key_word)
 
         if key_word_slot.product_choices == "단일상품":
-            qu_key = f'https://msearch.shopping.naver.com/search/all?query={qu_key}'
+            qu_key = f'https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query={qu_key}'
         else:
             naver_url = key_word_slot.product_url
             qu_key = f'{naver_url}?query={qu_key}'
