@@ -45,6 +45,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "return_id_corp",
+        "slot_status",
         "serch_key",
         # "product_choices",
         "product_mid",
