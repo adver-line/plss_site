@@ -52,6 +52,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         "slot_status",
         "click_count",
         "serch_key",
+        "store_names",
         "slot_start_date",
         "slot_end_date",
         "modyfi_check",
