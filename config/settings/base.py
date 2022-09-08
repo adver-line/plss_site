@@ -57,6 +57,7 @@ PROJECT_APP = [
     "place.apps.PlaceConfig",
     "site_trafic.apps.SiteTraficConfig",
     "slot_moo.apps.SlotMooConfig",
+    "auto_slot.apps.AutoSlotConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APP + THIRD_PARTY_APPS

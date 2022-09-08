@@ -26,6 +26,7 @@ urlpatterns = [
     path("place/", include("place.urls", namespace="place")),
     path("site/", include("site_trafic.urls", namespace="site")),
     path("slot_moo/", include("slot_moo.urls", namespace="slot_moo")),
+    path("auto_slot/", include("auto_slot.urls", namespace="auto_slot")),
 ]
 
 admin.site.site_header = "실유저 슬롯 관리자"
