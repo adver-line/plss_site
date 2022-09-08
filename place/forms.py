@@ -15,8 +15,8 @@ class PlaceSlotCreateForm(forms.ModelForm):
             "day_count": "슬롯 기간 선택",
             "click_count": "하루 클릭수(1일 기준 타수를 입력해주세요)",
             "serch_key": "방문 유입 키워드(검색 시 30위 이내 키워드로 세팅해 주세요)",
-            "store_names": "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)",
-            "product_url": "가게상호",
+            "product_url": "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)",
+            "store_names": "가게상호",
         }
 
     def save(self, *args, **kwargs):
