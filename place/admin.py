@@ -128,6 +128,7 @@ class CustomSlotAdmin(admin.ModelAdmin):
         "id",
         "return_id_corp",
         "slot_status",
+        "store_names",
         "click_count",
         "slot_start_date",
         "slot_end_date",
