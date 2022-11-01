@@ -31,6 +31,7 @@ class UpdateSlotView(
     fields = (
         "serch_key",
         "product_url",
+        "click_count",
         "store_names",
     )
 
@@ -53,6 +54,7 @@ class UpdateSlotView(
 
         form.fields["product_url"].label = "네이버 플레이스 URL(꼭 모바일 주소를 기입해 주세요. 예 - https://m.place.naver.com/1111111)"
         form.fields["store_names"].label = "가게상호(띄어쓰기 까지 정확하게 입력해 주세요)"
+        form.fields["click_count"].label = "클릭수"
         return form
 
     def form_valid(self, form):
